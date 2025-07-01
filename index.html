@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilhami Convection</title>
+    <meta name="description" content="Jasa pembuatan seragam kantor, kemeja, polo shirt custom dengan kualitas premium, desain modern, dan harga terbaik. Hubungi kami sekarang!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS RESET & GENERAL STYLING */
+        :root {
+            --primary-color: #005A9C; /* Biru Tua */
+            --secondary-color: #F7931E; /* Oranye */
+            --whatsapp-color: #25D366;
+            --background-color: #F8F9FA;
+            --text-color: #333;
+            --heading-color: #212529;
+            --white-color: #fff;
+            --gray-color: #6c757d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white-color);
+            line-height: 1.7;
+        }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        h1, h2, h3 { color: var(--heading-color); font-weight: 700; }
+        h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; }
+        h2 .highlight { color: var(--primary-color); }
+        .section-subtitle { text-align: center; margin-top: -40px; margin-bottom: 50px; color: var(--gray-color); max-width: 600px; margin-left: auto; margin-right: auto;}
+        
+        /* HEADER */
+        header {
+            background: var(--white-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+        header.scrolled { box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+
+        /* BUTTONS */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .btn-primary { background-color: var(--secondary-color); color: var(--white-color); }
+        .btn-whatsapp { background-color: var(--whatsapp-color); color: var(--white-color); }
+        .btn-whatsapp img { width: 24px; height: 24px; }
+        
+        /* HERO SECTION */
+        #hero { padding-top: 60px; padding-bottom: 80px; }
+        .hero-wrapper { display: flex; align-items: center; gap: 50px; }
+        .hero-content { flex: 1; }
+        .hero-image { flex: 1; text-align: center; }
+        .hero-image img { max-width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .benefits-list { list-style: none; margin: 30px 0; }
+        .benefits-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .benefits-list .icon-check {
+            width: 24px;
+            height: 24px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* KEUNGGULAN SECTION */
+        #keunggulan { background-color: var(--background-color); }
+        .keunggulan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .keunggulan-card {
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .keunggulan-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .keunggulan-card .icon { margin-bottom: 20px; font-size: 3rem; color: var(--primary-color);}
+        .keunggulan-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+
+        /* PORTFOLIO SECTION */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .portfolio-item img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        /* ALUR PEMESANAN SECTION */
+        #alur { background-color: var(--background-color); }
+        .alur-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .alur-step .step-number {
+            width: 60px; height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
+            border: 4px solid var(--white-color);
+            box-shadow: 0 0 0 3px var(--primary-color);
+        }
+        .alur-step h3 { font-size: 1.2rem; margin-bottom: 5px; }
+
+        /* TESTIMONIAL SECTION */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .testimonial-item img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* FLOATING WHATSAPP BUTTON */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+
+        /* FOOTER */
+        footer { background-color: var(--heading-color); color: var(--white-color); text-align: center; padding: 20px 0; }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .keunggulan-grid { grid-template-columns: repeat(2, 1fr); }
+            .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+            .alur-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+            .navbar { flex-direction: column; gap: 10px; }
+            .hero-wrapper { flex-direction: column; text-align: center; }
+            .hero-content { order: 2; }
+            .hero-image { order: 1; }
+            .benefits-list { text-align: left; }
+            .keunggulan-grid, .alur-grid, .testimonial-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Ilhami Convection</a>
+            <a href="https://wa.me/+6281264423298" target="_blank" class="btn btn-primary">
+                Hubungi Kami
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="container hero-wrapper">
+                <div class="hero-content">
+                    <h1>Buat Seragam Profesional Untuk Tim Anda</h1>
+                    <p>Tingkatkan citra Anda dengan seragam custom berkualitas premium. Desain modern, bahan nyaman, dan pengerjaan tepat waktu.</p>
+                    <ul class="benefits-list">
+                        <li><span class="icon-check">✓</span> Bahan Premium & Berkualitas</li>
+                        <li><span class="icon-check">✓</span> Desain Eksklusif Sesuai Brand</li>
+                        <li><span class="icon-check">✓</span> Gratis Konsultasi & Sampel</li>
+                        <li><span class="icon-check">✓</span> Pengerjaan Cepat & Tepat Waktu</li>
+                    </ul>
+                    <h4>kami mengerjakan beragam jenis pakaian</h4>
+                     <ul class="benefits-list">
+                        <li><span class="icon-check">✓</span> Jubah, gamis, koko, kurta, dan hijab</li>
+                        <li><span class="icon-check">✓</span> Kaos, seragam sekolah, dan seragam instansi</li>
+                        <li><span class="icon-check">✓</span> Pakaian komunitas dan tim</li>
+                    </ul>
+                    <a href="https://wa.me/+6281264423298" target="_blank" class="btn btn-whatsapp">
+                        <!-- Ganti ikon dengan SVG inline untuk performa lebih baik -->
+                        <img src="gambar/icon-removebg-preview.png" alt="WhatsApp Icon">
+                        Konsultasi via WhatsApp
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="gambar/bagiandepan.jpg" alt="Contoh Kemeja Seragam Kantor">
+                </div>
+            </div>
+        </section>
+
+        <!-- KEUNGGULAN SECTION -->
+        <section id="keunggulan">
+            <div class="container">
+                <h2>Kenapa Memilih <span class="highlight">Ilhami Convection?</span></h2>
+                <p class="section-subtitle">Kami berkomitmen memberikan hasil terbaik untuk setiap pesanan. Kepuasan Anda adalah prioritas utama kami.</p>
+                <div class="keunggulan-grid">
+                    <div class="keunggulan-card">
+                        <div class="icon">🏆</div>
+                        <h3>Kualitas Terjamin</h3>
+                        <p>Menggunakan bahan terbaik dan proses quality control yang ketat untuk memastikan setiap produk sempurna.</p>
+                    </div>
+                    <div class="keunggulan-card">
+                        <div class="icon">💸</div>
+                        <h3>Harga Kompetitif</h3>
+                        <p>Dapatkan penawaran harga terbaik tanpa mengurangi kualitas produk. Solusi efisien untuk budget perusahaan Anda.</p>
+                    </div>
+                    <div class="keunggulan-card">
+                        <div class="icon">🎨</div>
+                        <h3>Desain Custom</h3>
+                        <p>Tim desainer kami siap membantu mewujudkan seragam impian yang sesuai dengan identitas brand Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO SECTION -->
+        <section id="portfolio">
+            <div class="container">
+                <h2>Galeri Hasil Produksi</h2>
+                <p class="section-subtitle">Beberapa klien yang telah memercayakan pembuatan seragamnya kepada kami.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item"><img src="gambar/gambar jaket.jpg" alt="Portfolio 1"></div>
+                    <div class="portfolio-item"><img src="gambar/gambarbajukoko.jpg" alt="Portfolio 2"></div>
+                    <div class="portfolio-item"><img src="gambar/gambargamis.jpg" alt="Portfolio 3"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ALUR PEMESANAN SECTION -->
+        <section id="alur">
+            <div class="container">
+                <h2>Alur Pemesanan Mudah</h2>
+                <p class="section-subtitle">Hanya dengan 4 langkah mudah, seragam impian Anda siap kami produksi.</p>
+                <div class="alur-grid">
+                    <div class="alur-step">
+                        <div class="step-number">1</div>
+                        <h3>Hubungi Kami</h3>
+                        <p>Konsultasikan kebutuhan Anda melalui WhatsApp.</p>
+                    </div>
+                    <div class="alur-step">
+                        <div class="step-number">2</div>
+                        <h3>Desain & DP</h3>
+                        <p>Kirim desain Anda dan lakukan pembayaran DP 50%.</p>
+                    </div>
+                    <div class="alur-step">
+                        <div class="step-number">3</div>
+                        <h3>Proses Produksi</h3>
+                        <p>Kami akan memulai proses jahit, sablon, atau bordir.</p>
+                    </div>
+                    <div class="alur-step">
+                        <div class="step-number">4</div>
+                        <h3>Pelunasan & Kirim</h3>
+                        <p>Lakukan pelunasan dan seragam siap dikirim ke tempat Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- TESTIMONIAL SECTION -->
+        <section id="testimonial">
+            <div class="container">
+                <h2>Apa Kata Mereka?</h2>
+                <p class="section-subtitle">Kepuasan klien adalah bukti nyata dari kualitas kerja kami.</p>
+                <div class="testimonial-grid">
+                    <div class="testimonial-item"><img src="gambar/sc1.jpg" alt="Testimoni Klien 1"></div>
+                    <div class="testimonial-item"><img src="gambar/sc2.jpg" alt="Testimoni Klien 2"></div>
+                    <div class="testimonial-item"><img src="gambar/sc3.jpg" alt="Testimoni Klien 3"></div>
+                    <div class="testimonial-item"><img src="gambar/sc4.jpg" alt="Testimoni Klien 4"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/+6281264423298" target="_blank" class="floating-whatsapp btn btn-whatsapp">
+        <img src="gambar/icon-removebg-preview.png" alt="WhatsApp Icon">
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Ilhami Convection All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk efek shadow pada header saat di-scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
