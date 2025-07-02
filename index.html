@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilhami Convection</title>
-    <meta name="description" content="Jasa pembuatan seragam kantor, kemeja, polo shirt custom dengan kualitas premium, desain modern, dan harga terbaik. Hubungi kami sekarang!">
-    
-    <!-- Google Fonts -->
+    <title>Ilhami Convection - Jasa Konveksi Profesional</title>
+    <meta name="description" content="Jasa pembuatan seragam kantor, kemeja, polo shirt, gamis, dan kaos custom dengan kualitas premium, desain modern, dan harga terbaik. Hubungi kami sekarang!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS RESET & GENERAL STYLING */
         :root {
-            --primary-color: #005A9C; /* Biru Tua */
-            --secondary-color: #F7931E; /* Oranye */
+            --primary-color: #005A9C; 
+            --secondary-color: #F7931E; 
             --whatsapp-color: #25D366;
             --background-color: #F8F9FA;
             --text-color: #333;
@@ -33,27 +30,29 @@
             line-height: 1.7;
         }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; }
+        section { padding: 80px 0; overflow: hidden; /* Mencegah horizontal scroll dari animasi */ }
         h1, h2, h3 { color: var(--heading-color); font-weight: 700; }
         h1 { font-size: 2.8rem; margin-bottom: 1rem; }
         h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; }
         h2 .highlight { color: var(--primary-color); }
         .section-subtitle { text-align: center; margin-top: -40px; margin-bottom: 50px; color: var(--gray-color); max-width: 600px; margin-left: auto; margin-right: auto;}
         
-        /* HEADER */
         header {
             background: var(--white-color);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease-in-out;
         }
-        header.scrolled { box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header.scrolled { box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
         .navbar { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--heading-color); font-weight: 500; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .menu-toggle { display: none; cursor: pointer; background: none; border: none; font-size: 2rem; }
 
-        /* BUTTONS */
         .btn {
             padding: 12px 30px;
             border-radius: 8px;
@@ -63,14 +62,17 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
         .btn-primary { background-color: var(--secondary-color); color: var(--white-color); }
+        .btn-primary:hover { background-color: #e6830d; }
         .btn-whatsapp { background-color: var(--whatsapp-color); color: var(--white-color); }
-        .btn-whatsapp img { width: 24px; height: 24px; }
+        .btn-whatsapp:hover { background-color: #1ebe58; }
+        .btn-whatsapp svg { width: 24px; height: 24px; }
         
-        /* HERO SECTION */
         #hero { padding-top: 60px; padding-bottom: 80px; }
         .hero-wrapper { display: flex; align-items: center; gap: 50px; }
         .hero-content { flex: 1; }
@@ -78,96 +80,102 @@
         .hero-image img { max-width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .benefits-list { list-style: none; margin: 30px 0; }
         .benefits-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            margin-bottom: 15px; display: flex; align-items: center; gap: 15px;
+            font-size: 1.1rem; font-weight: 500;
         }
-        .benefits-list .icon-check {
-            width: 24px;
-            height: 24px;
-            background-color: var(--whatsapp-color);
-            color: white;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
+        .benefits-list .icon-check svg {
+            width: 24px; height: 24px; color: var(--whatsapp-color);
         }
 
-        /* KEUNGGULAN SECTION */
         #keunggulan { background-color: var(--background-color); }
         .keunggulan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .keunggulan-card {
-            background: var(--white-color);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: var(--white-color); padding: 30px; border-radius: 10px;
+            text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .keunggulan-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .keunggulan-card .icon { margin-bottom: 20px; font-size: 3rem; color: var(--primary-color);}
+        .keunggulan-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,90,156,0.1); }
+        .keunggulan-card .icon { margin-bottom: 20px; color: var(--primary-color);}
+        .keunggulan-card .icon svg { width: 48px; height: 48px; }
         .keunggulan-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
 
-        /* PORTFOLIO SECTION */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        #portfolio { padding-bottom: 60px;  }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .portfolio-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
+            width: 100%; height: 280px; object-fit: cover; border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
         .portfolio-item img:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        
-        /* ALUR PEMESANAN SECTION */
+
         #alur { background-color: var(--background-color); }
-        .alur-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .alur-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; position: relative; }
         .alur-step .step-number {
-            width: 60px; height: 60px;
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0 auto 20px auto;
-            border: 4px solid var(--white-color);
-            box-shadow: 0 0 0 3px var(--primary-color);
+            width: 60px; height: 60px; background-color: var(--primary-color); color: var(--white-color);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 700; margin: 0 auto 20px auto;
+            border: 4px solid var(--background-color); box-shadow: 0 0 0 3px var(--primary-color);
         }
         .alur-step h3 { font-size: 1.2rem; margin-bottom: 5px; }
 
-        /* TESTIMONIAL SECTION */
-        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .testimonial-item img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid #eee;
+            width: 100%; border-radius: 10px; border: 1px solid #eee;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        /* FLOATING WHATSAPP BUTTON */
+        .testimonial-item img:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+ 
         .floating-whatsapp {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
+            position: fixed; bottom: 25px; right: 25px; z-index: 999;
+            width: 60px; height: 60px; border-radius: 50%;
+            padding: 0; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .floating-whatsapp svg { width: 32px; height: 32px; }
+
+        footer { background-color: var(--heading-color); color: var(--white-color); text-align: center; padding: 20px 0; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* FOOTER */
-        footer { background-color: var(--heading-color); color: var(--white-color); text-align: center; padding: 20px 0; }
-        
-        /* RESPONSIVE DESIGN */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 2000; padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-content {
+            position: relative; max-width: 90%; max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+        .modal-content img {
+            width: auto; height: auto; max-width: 100%;
+            max-height: 85vh; border-radius: 10px;
+        }
+        .modal-close {
+            position: absolute; top: -40px; right: 0;
+            font-size: 2.5rem; color: var(--white-color);
+            cursor: pointer; line-height: 1;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+
         @media (max-width: 992px) {
+            .nav-links { gap: 20px; }
             .keunggulan-grid { grid-template-columns: repeat(2, 1fr); }
-            .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
-            .alur-grid { grid-template-columns: repeat(2, 1fr); }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+            .alur-grid { grid-template-columns: repeat(2, 1fr); row-gap: 40px;}
             .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -175,13 +183,25 @@
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
             section { padding: 60px 0; }
-            .navbar { flex-direction: column; gap: 10px; }
+            
+            .nav-links {
+                position: fixed; top: 0; right: 0; height: 100vh;
+                background-color: var(--white-color);
+                flex-direction: column; align-items: center; justify-content: center;
+                width: 70%; transform: translateX(100%);
+                transition: transform 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.nav-active { transform: translateX(0); }
+            .nav-links li { margin: 20px 0; }
+            .menu-toggle { display: block; z-index: 1001; }
+            .header-cta { display: none; }
+
             .hero-wrapper { flex-direction: column; text-align: center; }
             .hero-content { order: 2; }
-            .hero-image { order: 1; }
-            .benefits-list { text-align: left; }
+            .hero-image { order: 1; margin-bottom: 30px; }
+            .benefits-list { display: inline-block; text-align: left; }
             .keunggulan-grid, .alur-grid, .testimonial-grid { grid-template-columns: 1fr; }
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -189,104 +209,105 @@
 
     <header id="header">
         <div class="container navbar">
-            <a href="#" class="logo">Ilhami Convection</a>
-            <a href="https://wa.me/+6281264423298" target="_blank" class="btn btn-primary">
+            <a href="#hero" class="logo">Ilhami Convection</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#keunggulan">Keunggulan</a></li>
+                    <li><a href="#hasil produksi">Hasil produksi</a></li>
+                    <li><a href="#alur">Alur Pesan</a></li>
+                    <li><a href="#testimonial">Testimoni</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/+6281264423298" target="_blank" class="btn btn-primary header-cta">
                 Hubungi Kami
             </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Buka Menu">☰</button>
         </div>
     </header>
 
     <main>
-        <!-- HERO SECTION -->
         <section id="hero">
             <div class="container hero-wrapper">
                 <div class="hero-content">
                     <h1>Buat Seragam Profesional Untuk Tim Anda</h1>
                     <p>Tingkatkan citra Anda dengan seragam custom berkualitas premium. Desain modern, bahan nyaman, dan pengerjaan tepat waktu.</p>
                     <ul class="benefits-list">
-                        <li><span class="icon-check">✓</span> Bahan Premium & Berkualitas</li>
-                        <li><span class="icon-check">✓</span> Desain Eksklusif Sesuai Brand</li>
-                        <li><span class="icon-check">✓</span> Gratis Konsultasi & Sampel</li>
-                        <li><span class="icon-check">✓</span> Pengerjaan Cepat & Tepat Waktu</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Bahan Premium & Berkualitas</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Desain Eksklusif Sesuai Brand</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Gratis Konsultasi & Sampel</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Pengerjaan Cepat & Tepat Waktu</li>
                     </ul>
-                    <h4>kami mengerjakan beragam jenis pakaian</h4>
+                    <h4>Kami mengerjakan beragam jenis pakaian:</h4>
                      <ul class="benefits-list">
-                        <li><span class="icon-check">✓</span> Jubah, gamis, koko, kurta, dan hijab</li>
-                        <li><span class="icon-check">✓</span> Kaos, seragam sekolah, dan seragam instansi</li>
-                        <li><span class="icon-check">✓</span> Pakaian komunitas dan tim</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Jubah, gamis, koko, kurta, dan hijab</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Kaos, seragam sekolah, dan seragam instansi</li>
+                        <li><span class="icon-check"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span> Pakaian komunitas dan tim</li>
                     </ul>
                     <a href="https://wa.me/+6281264423298" target="_blank" class="btn btn-whatsapp">
-                        <!-- Ganti ikon dengan SVG inline untuk performa lebih baik -->
-                        <img src="icon-removebg-preview.png" alt="WhatsApp Icon">
+                        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.872 9.872 0 0 0-2.91-7.01zM12.04 20.15h-.01c-1.55 0-3.07-.4-4.42-1.15l-.32-.19-3.3 1.1.88-3.22-.21-.34a8.084 8.084 0 0 1-1.26-4.48c0-4.42 3.59-8.01 8.01-8.01s8.01 3.59 8.01 8.01-3.59 8.01-8.01 8.01zm4.49-6.17c-.26-.13-1.56-.77-1.8-0.87-.24-.09-.42-.13-.59.13-.17.26-.68.87-.83 1.04-.15.17-.3.19-.56.06-.26-.13-1.08-.4-2.05-1.27-.76-.66-1.27-1.47-1.42-1.73-.15-.26-.02-.4.12-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.31-.02-.44s-.59-1.42-.81-1.95c-.21-.52-.42-.45-.59-.46-.16-.01-.34-.01-.51-.01s-.42.06-.64.31c-.22.25-.86.84-.86 2.05 0 1.21.88 2.37 1 2.54.12.17 1.75 2.67 4.24 3.73 2.49 1.06 2.49.71 2.94.69.45-.02 1.56-.64 1.78-1.25.22-.62.22-1.14.15-1.25-.07-.12-.25-.19-.51-.32z"/></svg>
                         Konsultasi via WhatsApp
                     </a>
                 </div>
                 <div class="hero-image">
-                    <img src="bagiandepan.jpg" alt="Contoh Kemeja Seragam Kantor">
+                    <img src="gambar/bagiandepan.jpg" alt="Contoh Kemeja Seragam Kantor">
                 </div>
             </div>
         </section>
-
-        <!-- KEUNGGULAN SECTION -->
         <section id="keunggulan">
             <div class="container">
-                <h2>Kenapa Memilih <span class="highlight">Ilhami Convection?</span></h2>
-                <p class="section-subtitle">Kami berkomitmen memberikan hasil terbaik untuk setiap pesanan. Kepuasan Anda adalah prioritas utama kami.</p>
+                <h2 class="reveal">Kenapa Memilih <span class="highlight">Ilhami Convection?</span></h2>
+                <p class="section-subtitle reveal">Kami berkomitmen memberikan hasil terbaik untuk setiap pesanan. Kepuasan Anda adalah prioritas utama kami.</p>
                 <div class="keunggulan-grid">
-                    <div class="keunggulan-card">
-                        <div class="icon">🏆</div>
+                    <div class="keunggulan-card reveal">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-6.75c-.622 0-1.125.504-1.125 1.125v3.375m9 0h-9" /></svg></div>
                         <h3>Kualitas Terjamin</h3>
                         <p>Menggunakan bahan terbaik dan proses quality control yang ketat untuk memastikan setiap produk sempurna.</p>
                     </div>
-                    <div class="keunggulan-card">
-                        <div class="icon">💸</div>
+                    <div class="keunggulan-card reveal">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div>
                         <h3>Harga Kompetitif</h3>
-                        <p>Dapatkan penawaran harga terbaik tanpa mengurangi kualitas produk. Solusi efisien untuk budget perusahaan Anda.</p>
+                        <p>Dapatkan penawaran harga terbaik tanpa mengurangi kualitas produk. Solusi efisien untuk budget Anda.</p>
                     </div>
-                    <div class="keunggulan-card">
-                        <div class="icon">🎨</div>
+                    <div class="keunggulan-card reveal">
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a2.25 2.25 0 012.4-2.245 4.5 4.5 0 00-8.4 2.245c0 .399.078.78.22 1.128zm0 0l-1.172 1.172a4.5 4.5 0 005.78 1.128l1.172-1.172" /></svg></div>
                         <h3>Desain Custom</h3>
                         <p>Tim desainer kami siap membantu mewujudkan seragam impian yang sesuai dengan identitas brand Anda.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- PORTFOLIO SECTION -->
-        <section id="portfolio">
+        <section id="hasil produksi">
             <div class="container">
-                <h2>Galeri Hasil Produksi</h2>
-                <p class="section-subtitle">Beberapa klien yang telah memercayakan pembuatan seragamnya kepada kami.</p>
+                <h2 class="reveal">Galeri Hasil Produksi</h2>
+                <p class="section-subtitle reveal">Beberapa klien yang telah memercayakan pembuatan seragamnya kepada kami.</p>
                 <div class="portfolio-grid">
-                    <div class="portfolio-item"><img src="gambar jaket.jpg" alt="Portfolio 1"></div>
-                    <div class="portfolio-item"><img src="gambarbajukoko.jpg" alt="Portfolio 2"></div>
-                    <div class="portfolio-item"><img src="gambargamis.jpg" alt="Portfolio 3"></div>
+                    <div class="portfolio-item reveal"><img src="gambar/gambar jaket.jpg" alt="Portfolio Jaket" loading="lazy"></div>
+                    <div class="portfolio-item reveal"><img src="gambar/gambarbajukoko.jpg" alt="Portfolio Baju Koko" loading="lazy"></div>
+                    <div class="portfolio-item reveal"><img src="gambar/gambargamis.jpg" alt="Portfolio Gamis" loading="lazy"></div>
                 </div>
             </div>
         </section>
-        
-        <!-- ALUR PEMESANAN SECTION -->
         <section id="alur">
             <div class="container">
-                <h2>Alur Pemesanan Mudah</h2>
-                <p class="section-subtitle">Hanya dengan 4 langkah mudah, seragam impian Anda siap kami produksi.</p>
+                <h2 class="reveal">Alur Pemesanan Mudah</h2>
+                <p class="section-subtitle reveal">Hanya dengan 4 langkah mudah, seragam impian Anda siap kami produksi.</p>
                 <div class="alur-grid">
-                    <div class="alur-step">
+                    <div class="alur-step reveal">
                         <div class="step-number">1</div>
                         <h3>Hubungi Kami</h3>
                         <p>Konsultasikan kebutuhan Anda melalui WhatsApp.</p>
                     </div>
-                    <div class="alur-step">
+                    <div class="alur-step reveal">
                         <div class="step-number">2</div>
                         <h3>Desain & DP</h3>
                         <p>Kirim desain Anda dan lakukan pembayaran DP 50%.</p>
                     </div>
-                    <div class="alur-step">
+                    <div class="alur-step reveal">
                         <div class="step-number">3</div>
                         <h3>Proses Produksi</h3>
                         <p>Kami akan memulai proses jahit, sablon, atau bordir.</p>
                     </div>
-                    <div class="alur-step">
+                    <div class="alur-step reveal">
                         <div class="step-number">4</div>
                         <h3>Pelunasan & Kirim</h3>
                         <p>Lakukan pelunasan dan seragam siap dikirim ke tempat Anda.</p>
@@ -294,43 +315,96 @@
                 </div>
             </div>
         </section>
-        
-        <!-- TESTIMONIAL SECTION -->
         <section id="testimonial">
             <div class="container">
-                <h2>Apa Kata Mereka?</h2>
-                <p class="section-subtitle">Kepuasan klien adalah bukti nyata dari kualitas kerja kami.</p>
+                <h2 class="reveal">Apa Kata Mereka?</h2>
+                <p class="section-subtitle reveal">Kepuasan klien adalah bukti nyata dari kualitas kerja kami.</p>
                 <div class="testimonial-grid">
-                    <div class="testimonial-item"><img src="sc1.jpg" alt="Testimoni Klien 1"></div>
-                    <div class="testimonial-item"><img src="sc2.jpg" alt="Testimoni Klien 2"></div>
-                    <div class="testimonial-item"><img src="sc3.jpg" alt="Testimoni Klien 3"></div>
-                    <div class="testimonial-item"><img src="sc4.jpg" alt="Testimoni Klien 4"></div>
+                    <div class="testimonial-item reveal"><img src="gambar/sc1.jpg" alt="Testimoni Klien 1" loading="lazy"></div>
+                    <div class="testimonial-item reveal"><img src="gambar/sc2.jpg" alt="Testimoni Klien 2" loading="lazy"></div>
+                    <div class="testimonial-item reveal"><img src="gambar/sc3.jpg" alt="Testimoni Klien 3" loading="lazy"></div>
+                    <div class="testimonial-item reveal"><img src="gambar/sc4.jpg" alt="Testimoni Klien 4" loading="lazy"></div>
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- FLOATING WHATSAPP -->
     <a href="https://wa.me/+6281264423298" target="_blank" class="floating-whatsapp btn btn-whatsapp">
-        <img src="gambar/icon-removebg-preview.png" alt="WhatsApp Icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.872 9.872 0 0 0-2.91-7.01zM12.04 20.15h-.01c-1.55 0-3.07-.4-4.42-1.15l-.32-.19-3.3 1.1.88-3.22-.21-.34a8.084 8.084 0 0 1-1.26-4.48c0-4.42 3.59-8.01 8.01-8.01s8.01 3.59 8.01 8.01-3.59 8.01-8.01 8.01zm4.49-6.17c-.26-.13-1.56-.77-1.8-0.87-.24-.09-.42-.13-.59.13-.17.26-.68.87-.83 1.04-.15.17-.3.19-.56.06-.26-.13-1.08-.4-2.05-1.27-.76-.66-1.27-1.47-1.42-1.73-.15-.26-.02-.4.12-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.31-.02-.44s-.59-1.42-.81-1.95c-.21-.52-.42-.45-.59-.46-.16-.01-.34-.01-.51-.01s-.42.06-.64.31c-.22.25-.86.84-.86 2.05 0 1.21.88 2.37 1 2.54.12.17 1.75 2.67 4.24 3.73 2.49 1.06 2.49.71 2.94.69.45-.02 1.56-.64 1.78-1.25.22-.62.22-1.14.15-1.25-.07-.12-.25-.19-.51-.32z"/></svg>
     </a>
+    <div id="portfolio-modal" class="modal-overlay">
+        <span class="modal-close" id="modal-close-btn">×</span>
+        <div class="modal-content">
+            <img src="" alt="Portfolio Image Large View" id="modal-image">
+        </div>
+    </div>
 
     <footer>
         <div class="container">
-            <p>© 2024 Ilhami Convection All Rights Reserved.</p>
+            <p>© 2024 Ilhami Convection. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // JavaScript untuk efek shadow pada header saat di-scroll
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.getElementById('header');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
+            });
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+                menuToggle.innerHTML = navLinks.classList.contains('nav-active') ? '×' : '☰';
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('nav-active')) {
+                        navLinks.classList.remove('nav-active');
+                        menuToggle.innerHTML = '☰';
+                    }
+                });
+            });
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+            const portfolioImages = document.querySelectorAll('.portfolio-item img');
+            const modal = document.getElementById('portfolio-modal');
+            const modalImage = document.getElementById('modal-image');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+
+            portfolioImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    modal.classList.add('show');
+                    modalImage.src = img.src;
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            const closeModal = () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            };
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
             });
         });
     </script>
